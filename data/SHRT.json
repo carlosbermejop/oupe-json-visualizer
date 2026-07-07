@@ -1,0 +1,30 @@
+{
+  "type": "SHRT",
+  "competence": ["GRAMMAR"],
+  "question": "Write short answers. (8 marks) Example: Does he live near you? Yes, he does.",
+  "text_with_gaps": [
+    "Does she like bananas? [_1_]",
+    "Does your phone have a radio app? [_2_]",
+    "Is Enrique in his room? [_3_]",
+    "Can you play the piano, Sarah? [_4_]",
+    "Have you been to Gibraltar, John? [_5_]",
+    "Are you and Aysha in the same class? [_6_]",
+    "Is there much snow at the moment? [_7_]",
+    "Did Rafa's sister come to the party? [_8_]"
+  ],
+  "solutions": [
+    "Yes, she does. / No, she doesn't.",
+    "Yes, it does. / No, it doesn't.",
+    "Yes, he is. / No, he isn't.",
+    "Yes, I can. / No, I can't.",
+    "Yes, I have. / No, I haven't.",
+    "Yes, we are. / No, we aren't.",
+    "Yes, there is. / No, there isn't.",
+    "Yes, she did. / No, she didn't."
+  ],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 Diagnostic test.doc",
+    "page": 1
+  }
+}

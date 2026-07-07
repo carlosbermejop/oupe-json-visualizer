@@ -1,0 +1,40 @@
+{
+  "type": "WROD",
+  "competence": ["GRAMMAR"],
+  "question": "Put the words in the correct order to make sentences or questions. (8 marks)",
+  "text_with_gaps": [
+    "1 [_1_]",
+    "2 [_2_]",
+    "3 [_3_]",
+    "4 [_4_]",
+    "5 [_5_]",
+    "6 [_6_]",
+    "7 [_7_]",
+    "8 [_8_]"
+  ],
+  "scrambled_words": [
+    "you / when / born / were",
+    "he / the / sea / swims / in / never",
+    "guitarist / is / good / Helen / a",
+    "what / mean / this / word / does",
+    "Japanese / very / speaks / well / he",
+    "that / pen / is / mine / black",
+    "terrible / he / a / singer / is",
+    "food / I / like / Italian / much / very"
+  ],
+  "solutions": [
+    "When were you born?",
+    "He never swims in the sea.",
+    "Helen is a good guitarist.",
+    "What does this word mean?",
+    "He speaks Japanese very well.",
+    "That black pen is mine.",
+    "He is a terrible singer.",
+    "I like Italian food very much."
+  ],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 Diagnostic test.doc",
+    "page": 2
+  }
+}

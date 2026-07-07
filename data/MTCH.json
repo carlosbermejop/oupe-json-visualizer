@@ -1,0 +1,31 @@
+{
+  "type": "MTCH",
+  "competence": ["LISTENING"],
+  "question": "05 Listen again, and match sentence beginnings 1-5 with endings A-E. (10 marks)",
+  "text_with_gaps": [
+    "In his youth, Kenny visited the cinema often [_1_]",
+    "Kenny realized he could meet more people online [_2_]",
+    "Kenny would rather watch films than TV series [_3_]",
+    "Kenny can make sure his videos don't get boring [_4_]",
+    "Being attractive or having expensive equipment isn't so important [_5_]"
+  ],
+  "match_options": {
+    "A": "if he uploaded his video blog on the internet.",
+    "B": "if you have things to share that you feel strongly about.",
+    "C": "if he adjusts how much light he uses.",
+    "D": "because they didn't own a television.",
+    "E": "because he thinks TV series take up too much time."
+  },
+  "solutions": [
+    "1:D",
+    "2:A",
+    "3:E",
+    "4:C",
+    "5:B"
+  ],
+  "assets": ["audio/05.mp3"],
+  "_source": {
+    "pdf": "Idiomatic 1 EOT1 test Challenge.doc",
+    "page": 4
+  }
+}

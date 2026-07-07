@@ -1,0 +1,24 @@
+{
+  "type": "WQUE",
+  "competence": ["GRAMMAR"],
+  "question": "Write questions for the underlined words. (5 marks)",
+  "text_with_gaps": [
+    "Nuno comes from <u>Brazil</u>. [_1_]",
+    "I'm drinking <u>mineral water</u>. [_2_]",
+    "My camera cost <u>200 euros</u>. [_3_]",
+    "I come to school <u>by train</u>. [_4_]",
+    "David isn't here <u>because he's at the dentist's</u>. [_5_]"
+  ],
+  "solutions": [
+    "Where does Nuno come from?",
+    "What are you drinking?",
+    "How much did your camera cost?",
+    "How do you come to school?",
+    "Why isn't David here?"
+  ],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 Diagnostic test.doc",
+    "page": 2
+  }
+}

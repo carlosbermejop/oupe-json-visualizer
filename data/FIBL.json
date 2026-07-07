@@ -1,0 +1,34 @@
+{
+  "type": "FIBL",
+  "competence": ["GRAMMAR"],
+  "question": "Complete the sentences with the correct form of be or have. Use the present simple and use contractions where possible. (10 marks)",
+  "text_with_gaps": [
+    "When [_1_] Cathy's party?",
+    "My sisters [_2_] both married.",
+    "He [_3_] seventeen years old.",
+    "[_4_] you hungry?",
+    "Oliver [_5_] got a new girlfriend.",
+    "I [_6_] from Jerez, I'm from Cádiz.",
+    "What time do you usually [_7_] lunch?",
+    "[_8_] this your room?",
+    "There [_9_] a lot of people in this café.",
+    "She can't drive because she [_10_] got a licence."
+  ],
+  "solutions": [
+    "is",
+    "are",
+    "is",
+    "Are",
+    "has",
+    "am not",
+    "have",
+    "Is",
+    "are",
+    "hasn't"
+  ],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 Diagnostic test.doc",
+    "page": 1
+  }
+}

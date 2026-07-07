@@ -1,0 +1,34 @@
+{
+  "type": "MCHS",
+  "competence": ["GRAMMAR"],
+  "question": "Choose the correct options. (6 marks)",
+  "text_with_gaps": [
+    "Take an umbrella. It [_1_].",
+    "I [_2_] shopping later today.",
+    "They [_3_] late last night.",
+    "What film [_4_] yesterday?",
+    "I think I [_5_] a bath after lunch.",
+    "Selma [_6_] her homework when I called."
+  ],
+  "options": [
+    "rains / 's raining / rained",
+    "go / 'm going to go / went",
+    "arrive / arrived / have arrived",
+    "did you see / are you seeing / will you see",
+    "'m having / have / 'll have",
+    "has done / was doing / 's doing"
+  ],
+  "solutions": [
+    "'s raining",
+    "'m going to go",
+    "arrived",
+    "did you see",
+    "'ll have",
+    "was doing"
+  ],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 Diagnostic test.doc",
+    "page": 1
+  }
+}

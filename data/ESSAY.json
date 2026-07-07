@@ -1,0 +1,15 @@
+{
+  "type": "ESSAY",
+  "competence": ["WRITING"],
+  "question": "Choose one of the tasks. Write 120-200 words. (15 marks)",
+  "text_with_gaps": [
+    "Write a review of your favourite video game that you play on a mobile, online or on a games console.",
+    "Some people believe that printed newspapers and magazines will soon disappear. Write an opinion essay about the future of printed news media."
+  ],
+  "solutions": [],
+  "assets": [],
+  "_source": {
+    "pdf": "Idiomatic 1 EOT1 test Challenge.doc",
+    "page": 4
+  }
+}
