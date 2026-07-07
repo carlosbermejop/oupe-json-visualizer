@@ -25,9 +25,14 @@ export const ValidationForm: React.FC<ValidationFormProps> = ({
 
   const handleValidate = () => {
     onSubmit(true);
-    setSubmitted(true);
-    setReasoning('');
-    setShowReasoningField(false);
+    setTimeout(() => {
+      if (canNext) {
+        onNext();
+        setSubmitted(false);
+        setReasoning('');
+        setShowReasoningField(false);
+      }
+    }, 300);
   };
 
   const handleReject = () => {
@@ -40,9 +45,14 @@ export const ValidationForm: React.FC<ValidationFormProps> = ({
       return;
     }
     onSubmit(false, reasoning);
-    setSubmitted(true);
-    setReasoning('');
-    setShowReasoningField(false);
+    setTimeout(() => {
+      if (canNext) {
+        onNext();
+        setSubmitted(false);
+        setReasoning('');
+        setShowReasoningField(false);
+      }
+    }, 300);
   };
 
   const handleCancelReject = () => {

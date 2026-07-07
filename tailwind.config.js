@@ -7,5 +7,11 @@ export default {
   theme: {
     extend: {},
   },
+  safelist: [
+    'bg-green-600',
+    'hover:bg-green-700',
+    'bg-red-600',
+    'hover:bg-red-700',
+  ],
   plugins: [],
 }
