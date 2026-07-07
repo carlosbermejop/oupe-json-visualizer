@@ -6,6 +6,8 @@ import { ValidationForm } from './components/ValidationForm';
 import { generateExcel, downloadExcel, ValidationState } from './lib/excel';
 import './App.css';
 
+type TabFilter = 'all' | 'validated' | 'rejected' | 'pending';
+
 function App() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [fileName, setFileName] = useState<string>('');
@@ -13,6 +15,7 @@ function App() {
   const [validations, setValidations] = useState<ValidationState>({});
   const [error, setError] = useState<string>('');
   const [isExporting, setIsExporting] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabFilter>('all');
 
   const handleUpload = (uploadedQuestions: Question[], uploadedFileName: string) => {
     setQuestions(uploadedQuestions);
@@ -20,6 +23,7 @@ function App() {
     setCurrentIndex(0);
     setValidations({});
     setError('');
+    setActiveTab('all');
   };
 
   const handleValidation = (validated: boolean, reasoning?: string) => {
@@ -33,14 +37,16 @@ function App() {
   };
 
   const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < questions.length) {
+      setCurrentIndex(nextIndex);
     }
   };
 
   const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    const prevIndex = currentIndex - 1;
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
     }
   };
 
@@ -69,10 +75,12 @@ function App() {
     setCurrentIndex(0);
     setValidations({});
     setError('');
+    setActiveTab('all');
   };
 
   const validatedCount = Object.values(validations).filter((v) => v.validated).length;
   const rejectedCount = Object.values(validations).filter((v) => !v.validated).length;
+  const pendingCount = questions.length - validatedCount - rejectedCount;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
@@ -107,29 +115,55 @@ function App() {
           ) : (
             // Validation State
             <div className="space-y-8">
-              <div className="flex justify-between items-center border-b pb-4">
-                <h2 className="text-2xl font-semibold text-gray-900">
-                  {fileName}
-                </h2>
-                <div className="flex gap-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                    <span className="text-gray-700">
-                      Validated: <span className="font-bold">{validatedCount}</span>
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                    <span className="text-gray-700">
-                      Rejected: <span className="font-bold">{rejectedCount}</span>
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-gray-300 rounded-full"></span>
-                    <span className="text-gray-700">
-                      Pending: <span className="font-bold">{questions.length - validatedCount - rejectedCount}</span>
-                    </span>
-                  </div>
+              <div className="border-b pb-4">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-2xl font-semibold text-gray-900">
+                    {fileName}
+                  </h2>
+                </div>
+
+                {/* Tabs */}
+                <div className="flex gap-6 border-b">
+                  <button
+                    onClick={() => setActiveTab('all')}
+                    className={`px-4 py-2 font-medium border-b-2 transition ${
+                      activeTab === 'all'
+                        ? 'border-blue-600 text-blue-600'
+                        : 'border-transparent text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    All: {questions.length}
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('validated')}
+                    className={`px-4 py-2 font-medium border-b-2 transition ${
+                      activeTab === 'validated'
+                        ? 'border-green-600 text-green-600'
+                        : 'border-transparent text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    Validated: {validatedCount}
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('rejected')}
+                    className={`px-4 py-2 font-medium border-b-2 transition ${
+                      activeTab === 'rejected'
+                        ? 'border-red-600 text-red-600'
+                        : 'border-transparent text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    Rejected: {rejectedCount}
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('pending')}
+                    className={`px-4 py-2 font-medium border-b-2 transition ${
+                      activeTab === 'pending'
+                        ? 'border-gray-600 text-gray-600'
+                        : 'border-transparent text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    Pending: {pendingCount}
+                  </button>
                 </div>
               </div>
 
@@ -147,7 +181,6 @@ function App() {
                 <div className="lg:col-span-2">
                   <QuestionDisplay
                     question={questions[currentIndex]}
-                    index={currentIndex}
                   />
                 </div>
 

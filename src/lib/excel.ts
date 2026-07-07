@@ -21,7 +21,7 @@ export const generateExcel = async (
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('Questions');
 
-  // Define columns
+  // Define columns - keeping exact case from user's model
   const columns = [
     { header: 'idTitulo', key: 'idTitulo', width: 15 },
     { header: 'idPregunta', key: 'idPregunta', width: 15 },
@@ -39,9 +39,9 @@ export const generateExcel = async (
 
   worksheet.columns = columns as any;
 
-  // Style header row
-  worksheet.getRow(1).font = { bold: true, color: { argb: 'FFFFFFFF' } };
-  worksheet.getRow(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF366092' } };
+  // Add header row without color styling
+  const headerRow = worksheet.getRow(1);
+  headerRow.font = { bold: true };
 
   // Add data rows
   let questionCounter = 1;
@@ -54,8 +54,8 @@ export const generateExcel = async (
 
       const row: ExcelRow = {
         idTitulo: TITLE_ID,
-        idPregunta: questionCounter,
-        idJson: jsonFileName.replace('.json', ''),
+        idPregunta: `${TITLE_ID}${questionCounter}`,
+        idJson: jsonFileName,
         IdEstructura: '',
         idTipoPregunta: question.type,
         idIdioma: LANGUAGE,
@@ -76,8 +76,8 @@ export const generateExcel = async (
 
       const row: ExcelRow = {
         idTitulo: TITLE_ID,
-        idPregunta: questionCounter,
-        idJson: jsonFileName.replace('.json', ''),
+        idPregunta: `${TITLE_ID}${questionCounter}`,
+        idJson: jsonFileName,
         IdEstructura: '',
         idTipoPregunta: question.type,
         idIdioma: LANGUAGE,

@@ -22,7 +22,7 @@ export interface ValidationResult {
 
 export interface ExcelRow {
   idTitulo: string;
-  idPregunta: number;
+  idPregunta: string;
   idJson: string;
   IdEstructura: string;
   idTipoPregunta: string;
