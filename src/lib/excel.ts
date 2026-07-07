@@ -8,7 +8,8 @@ export interface ValidationState {
   };
 }
 
-const TITLE_ID = 'TIT001';
+const TITLE_ID = '168641285';
+const QUESTION_ID_PREFIX = 'IDIOMATIC_1_Q';
 const LANGUAGE = 'EN';
 const DIFFICULTY = 'F';
 const APPROVED_BY = 'Test User';
@@ -54,7 +55,7 @@ export const generateExcel = async (
 
       const row: ExcelRow = {
         idTitulo: TITLE_ID,
-        idPregunta: `${TITLE_ID}${questionCounter}`,
+        idPregunta: `${QUESTION_ID_PREFIX}_${questionCounter}`,
         idJson: jsonFileName,
         IdEstructura: '',
         idTipoPregunta: question.type,
@@ -76,7 +77,7 @@ export const generateExcel = async (
 
       const row: ExcelRow = {
         idTitulo: TITLE_ID,
-        idPregunta: `${TITLE_ID}${questionCounter}`,
+        idPregunta: `${QUESTION_ID_PREFIX}_${questionCounter}`,
         idJson: jsonFileName,
         IdEstructura: '',
         idTipoPregunta: question.type,

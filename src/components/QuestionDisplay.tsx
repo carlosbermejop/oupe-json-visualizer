@@ -40,8 +40,9 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question }) =>
           <h3 className="text-lg font-semibold text-gray-900">
             {question.question || question.text}
             {question.competence && (
-              <span className="text-base font-normal text-gray-600 ml-1">
-                (competency: {Array.isArray(question.competence) ? question.competence.join(', ') : question.competence})
+              <span className="text-base font-normal text-gray-600">
+                {' - Competency: '}
+                {Array.isArray(question.competence) ? question.competence.join(', ') : question.competence}
               </span>
             )}
           </h3>
@@ -52,7 +53,11 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question }) =>
       {question.text_with_gaps && (
         <div className="bg-blue-50 border border-blue-200 rounded p-3">
           <p className="font-medium text-blue-900 mb-2">Text with gaps:</p>
-          <p className="text-blue-800 whitespace-pre-wrap">{question.text_with_gaps}</p>
+          <p className="text-blue-800 whitespace-pre-wrap">
+            {Array.isArray(question.text_with_gaps)
+              ? question.text_with_gaps.join('\n')
+              : question.text_with_gaps}
+          </p>
         </div>
       )}
 
@@ -62,7 +67,7 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question }) =>
         {question.options && renderField('Options', question.options)}
         {question.content && renderField('Content', question.content)}
         {question.text && !question.question && renderField('Text', question.text)}
-        {question.assets && renderField('Assets', question.assets)}
+        {question.assets && question.assets.length > 0 && renderField('Assets', question.assets)}
         
         {/* Display any other fields that aren't special */}
         {Object.entries(question).map(([key, value]) => {
@@ -79,7 +84,7 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question }) =>
         <div className="bg-green-50 border border-green-200 rounded p-3">
           <p className="font-medium text-green-900 mb-2">Solutions:</p>
           <p className="text-green-800 whitespace-pre-wrap">
-            {Array.isArray(question.solutions) ? question.solutions.join('; ') : String(question.solutions)}
+            {Array.isArray(question.solutions) ? question.solutions.join('\n') : String(question.solutions)}
           </p>
         </div>
       )}
