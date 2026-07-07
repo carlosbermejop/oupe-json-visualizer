@@ -98,7 +98,13 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question }) =>
       {question._source && (
         <div className="bg-gray-50 border border-gray-200 rounded p-3">
           <p className="font-medium text-gray-800 mb-2">Source:</p>
-          <p className="text-gray-700">{question._source}</p>
+          <p className="text-gray-700">
+            {typeof question._source === 'object'
+              ? Object.entries(question._source)
+                  .map(([key, val]) => `${key}: ${val}`)
+                  .join(', ')
+              : String(question._source)}
+          </p>
         </div>
       )}
     </div>

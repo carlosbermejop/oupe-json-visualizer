@@ -66,18 +66,19 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload, onError }) => 
   };
 
   return (
-    <div
-      onDragEnter={handleDrag}
-      onDragLeave={handleDrag}
-      onDragOver={handleDrag}
-      onDrop={handleDrop}
-      onClick={handleClick}
-      className={`w-full h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-all ${
-        isDragActive
-          ? 'border-blue-500 bg-blue-50'
-          : 'border-gray-300 bg-gray-50 hover:border-gray-400'
-      }`}
-    >
+    <div className="flex justify-center w-full">
+      <div
+        onDragEnter={handleDrag}
+        onDragLeave={handleDrag}
+        onDragOver={handleDrag}
+        onDrop={handleDrop}
+        onClick={handleClick}
+        className={`w-1/2 h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-all ${
+          isDragActive
+            ? 'border-blue-500 bg-blue-50'
+            : 'border-gray-300 bg-gray-50 hover:border-gray-400'
+        }`}
+      >
       <input
         ref={fileInputRef}
         type="file"
@@ -102,6 +103,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload, onError }) => 
         {isDragActive ? 'Drop your JSON file here' : 'Drag & drop your JSON file here'}
       </p>
       <p className="text-gray-500 text-sm mt-1">or click to select a file</p>
+      </div>
     </div>
   );
 };
