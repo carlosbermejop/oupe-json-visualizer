@@ -123,49 +123,30 @@ function App() {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex gap-6 border-b">
-                  <button
-                    onClick={() => setActiveTab('all')}
-                    className={`px-4 py-2 font-medium border-b-2 transition ${
-                      activeTab === 'all'
-                        ? 'border-blue-600 text-blue-600'
-                        : 'border-transparent text-gray-600 hover:text-gray-900'
-                    }`}
+                <table>
+                  <th
+                    className={`px-4 py-2 font-medium`}
                   >
                     All: {questions.length}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('validated')}
-                    className={`px-4 py-2 font-medium border-b-2 transition ${
-                      activeTab === 'validated'
-                        ? 'border-green-600 text-green-600'
-                        : 'border-transparent text-gray-600 hover:text-gray-900'
-                    }`}
+                  </th>
+                  <th
+                    className={`px-4 py-2 font-medium`}
                   >
                     Validated: {validatedCount}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('rejected')}
-                    className={`px-4 py-2 font-medium border-b-2 transition ${
-                      activeTab === 'rejected'
-                        ? 'border-red-600 text-red-600'
-                        : 'border-transparent text-gray-600 hover:text-gray-900'
-                    }`}
+                  </th>
+                  <th
+                    className={`px-4 py-2 font-medium `}
                   >
                     Rejected: {rejectedCount}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('pending')}
-                    className={`px-4 py-2 font-medium border-b-2 transition ${
-                      activeTab === 'pending'
-                        ? 'border-gray-600 text-gray-600'
-                        : 'border-transparent text-gray-600 hover:text-gray-900'
-                    }`}
+                  </th>
+                  <th
+                    className={`px-4 py-2 font-medium `}
                   >
                     Pending: {pendingCount}
-                  </button>
+                  </th>
+                  </table>
                 </div>
-              </div>
+
 
               {error && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">

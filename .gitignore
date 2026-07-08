@@ -144,3 +144,4 @@ vite.config.ts.timestamp-*
 
 # artifacts
 test-data/
+.DS_Store

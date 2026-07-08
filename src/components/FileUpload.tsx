@@ -73,7 +73,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload, onError }) => 
         onDragOver={handleDrag}
         onDrop={handleDrop}
         onClick={handleClick}
-        className={`w-1/2 h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-all ${
+        className={`w-md h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-all ${
           isDragActive
             ? 'border-blue-500 bg-blue-50'
             : 'border-gray-300 bg-gray-50 hover:border-gray-400'
