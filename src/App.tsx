@@ -4,9 +4,8 @@ import { FileUpload } from './components/FileUpload';
 import { QuestionDisplay } from './components/QuestionDisplay';
 import { ValidationForm } from './components/ValidationForm';
 import { generateExcel, downloadExcel, ValidationState } from './lib/excel';
+// @ts-ignore
 import './App.css';
-
-type TabFilter = 'all' | 'validated' | 'rejected' | 'pending';
 
 function App() {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -15,7 +14,6 @@ function App() {
   const [validations, setValidations] = useState<ValidationState>({});
   const [error, setError] = useState<string>('');
   const [isExporting, setIsExporting] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabFilter>('all');
 
   const handleUpload = (uploadedQuestions: Question[], uploadedFileName: string) => {
     setQuestions(uploadedQuestions);
@@ -23,7 +21,6 @@ function App() {
     setCurrentIndex(0);
     setValidations({});
     setError('');
-    setActiveTab('all');
   };
 
   const handleValidation = (validated: boolean, reasoning?: string) => {
@@ -75,7 +72,6 @@ function App() {
     setCurrentIndex(0);
     setValidations({});
     setError('');
-    setActiveTab('all');
   };
 
   const validatedCount = Object.values(validations).filter((v) => v.validated).length;
