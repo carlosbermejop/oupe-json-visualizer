@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/exercise-schema-v3.json",
+  "title": "Exercise Schema v3.0 text-gaps as array",
+  "description": "Schema v3.0 for validating English language exercise JSON files - text_with_gaps as array",
+  "type": "object",
+  "required": ["type", "competence", "question", "text_with_gaps", "solutions", "assets"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["FIBL", "MCHS", "SHRT", "WROD", "WQUE", "ESSAY", "MTCH"],
+      "description": "Exercise type code"
+    },
+    "competence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["GRAMMAR", "VOCABULARY", "READING", "WRITING", "LISTENING", "SPEAKING", "SPELLING"]
+      },
+      "minItems": 1,
+      "description": "Array of competences being tested"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exercise instructions including marks and optional example"
+    },
+    "text_with_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Array of exercise text items, each with gaps marked as [_N_]. For ESSAY type, contains task descriptions without gap pattern."
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Options for multiple choice exercises (only for MCHS type)"
+    },
+    "word_bank": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Word bank for fill-in exercises (optional for FIBL type)"
+    },
+    "scrambled_words": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Scrambled words for word order exercises (only for WROD type)"
+    },
+    "match_options": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z]$": {
+          "type": "string"
+        }
+      },
+      "description": "Match options for matching exercises (only for MTCH type). Keys are A, B, C, etc."
+    },
+    "solutions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of correct answers in order. Empty for ESSAY type (free writing)."
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri-reference"
+      },
+      "description": "Array of image/asset paths for the exercise"
+    },
+    "_source": {
+      "type": "object",
+      "properties": {
+        "pdf": {
+          "type": "string",
+          "description": "Source PDF filename"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Page number in source PDF"
+        }
+      },
+      "description": "Metadata about the source document"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "MCHS" } }
+      },
+      "then": {
+        "required": ["options"],
+        "properties": {
+          "options": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "WROD" } }
+      },
+      "then": {
+        "required": ["scrambled_words"],
+        "properties": {
+          "scrambled_words": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "FIBL" } }
+      },
+      "then": {
+        "properties": {
+          "word_bank": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "MTCH" } }
+      },
+      "then": {
+        "required": ["match_options"],
+        "properties": {
+          "match_options": {
+            "type": "object",
+            "minProperties": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "ESSAY" } }
+      },
+      "then": {
+        "properties": {
+          "solutions": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "properties": { "type": { "const": "ESSAY" } }
+        }
+      },
+      "then": {
+        "properties": {
+          "solutions": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}
